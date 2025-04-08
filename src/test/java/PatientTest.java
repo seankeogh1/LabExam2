@@ -13,6 +13,8 @@ public class PatientTest {
     String firstname = "John";
     int age = 20;
 
+    String hseNum ="345567891011";
+
 
     @BeforeAll
     static void init()
@@ -27,7 +29,7 @@ public class PatientTest {
 
     @Test
     void testFirstNameFailure(){
-        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20);});
+        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20,"234567891011");});
         assertEquals("Invalid Input",exMessage.getMessage());
     }
     @Test
@@ -38,7 +40,18 @@ public class PatientTest {
     @Test
     void testFamilyNameFail()
     {
-        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20);});
+        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20,"234567891011");});
+        assertEquals("Invalid Input",exMessage.getMessage());
+    }
+    @Test
+    void testHseSuccess(){
+        assertEquals("34567891011",hseNum);
+    }
+
+    @Test
+    void testHseFail(){
+
+        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20,"234567891011");});
         assertEquals("Invalid Input",exMessage.getMessage());
     }
 
