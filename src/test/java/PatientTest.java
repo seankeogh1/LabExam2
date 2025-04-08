@@ -27,13 +27,21 @@ public class PatientTest {
 
     @Test
     void testFirstNameFailure(){
-        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient();});
-        assertEquals("Must be a Letter not a number",exMessage.getMessage());
+        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20);});
+        assertEquals("Invalid Input",exMessage.getMessage());
     }
     @Test
-    void testFamilyNameSuccess(){
+    void testFamilyNameSuccess()
+    {
         assertEquals("Burke",familyname);
     }
+    @Test
+    void testFamilyNameFail()
+    {
+        Exception exMessage = assertThrows(IllegalArgumentException.class,()-> {  new Patient("John","John",20);});
+        assertEquals("Invalid Input",exMessage.getMessage());
+    }
+
 
 
 
